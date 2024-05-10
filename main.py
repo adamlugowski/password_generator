@@ -18,4 +18,16 @@ def password_generator(number_of_characters):
     return password
 
 
-print(password_generator(10))
+def main():
+    try:
+        user_input = int(input('Enter number of characters: '))
+        print("It's important that this password is shown only once")
+        print(f'This is your password: {password_generator(user_input)}')
+    except ValueError:
+        print('You should type integer.')
+    finally:
+        print('Take care of your password.')
+
+
+if __name__ == '__main__':
+    main()
