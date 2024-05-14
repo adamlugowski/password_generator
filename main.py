@@ -19,22 +19,25 @@ def password_generator(number_of_characters):
     return password
 
 
+def save(password):
+    with open('password.txt', mode='w') as file:
+        file.write(password)
+
+
 def main():
     try:
         user_input = int(getpass('Enter number of characters: '))
         if user_input <= 0:
             raise ValueError("Number of characters should be a positive integer.")
-        print("It's important that this password is shown only once")
         password = password_generator(user_input)
         if user_input > 100:
             user_input = 100
             print('Maximum password length is 100 characters. Generating password with 100 characters.')
-        print(f'This is your password: {password}')
-        return password
+        save(password)
     except ValueError as e:
         print(str(e))
     finally:
-        print('Take care of your password.')
+        print('Password was saved in password.txt file')
 
 
 if __name__ == '__main__':
