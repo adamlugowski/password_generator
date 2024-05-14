@@ -1,6 +1,7 @@
 from getpass import getpass
 from random import choice
 from string import ascii_letters, digits
+import datetime
 
 
 def password_generator(number_of_characters):
@@ -20,7 +21,14 @@ def password_generator(number_of_characters):
 
 
 def save(password):
-    with open('password.txt', mode='w') as file:
+    """
+    This function provides saving password in text file named dynamically based on timestamp
+    :param password: This is password generated in password_generator
+    :return: Saving in file
+    """
+    timestamp = timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    filename = f'password_{timestamp}.'
+    with open(filename, mode='w') as file:
         file.write(password)
 
 
